@@ -20,5 +20,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - uses: actions/download-artifact@v1
+      with:
+        name: pokemate-backend
+        path: targets/artifacts
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag pokemate/pokemate-backend:$(date +%s)

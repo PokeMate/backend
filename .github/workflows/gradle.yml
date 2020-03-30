@@ -28,3 +28,7 @@ jobs:
       run: chmod +x pokeMate/gradlew
     - name: Build with Gradle
       run: ./pokeMate/gradlew build
+    - uses: actions/upload-artifact@v1
+      with:
+        name: Package
+        path: pokeMate/build/libs
