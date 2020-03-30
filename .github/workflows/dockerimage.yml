@@ -5,12 +5,12 @@ on:
     branches:
         - master
         - develop
-        - backendAction-1
+        - backendActions-1
   pull_request:
     branches:
         - master
         - develop
-        - backendAction-1
+        - backendActions-1
 
 jobs:
 
