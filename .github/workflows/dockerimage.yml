@@ -2,9 +2,15 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ master ]
+    branches:
+        - master
+        - develop
+        - backendAction-1
   pull_request:
-    branches: [ master ]
+    branches:
+        - master
+        - develop
+        - backendAction-1
 
 jobs:
 
@@ -15,4 +21,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag pokeMateBackend:$(date +%s)
+      run: docker build . --file Dockerfile --tag pokemate/pokemate-backend:$(date +%s)
