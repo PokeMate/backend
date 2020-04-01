@@ -8,10 +8,12 @@ on:
     branches:
         - master
         - develop
+        - backendActions-1
   pull_request:
     branches:
         - master
         - develop
+        - backendActions-1
 
 jobs:
   build:
