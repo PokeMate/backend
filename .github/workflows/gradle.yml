@@ -32,9 +32,7 @@ jobs:
       uses: eskatos/gradle-command-action@v1
       with:      
         wrapper-directory: ./pokeMate/gradle/wrapper
-        arguments:
-          - build
-          - assemble              
+        arguments: build assemble              
     - name: Build with Gradle
       run: ./pokeMate/gradlew build assemble
     - name: Archive backend artifact
@@ -42,3 +40,9 @@ jobs:
       with:
         name: pokeMate-backend
         path: pokeMate/build/libs/
+    - uses: actions/download-artifact@v1
+      with:
+        name: pokemate-backend
+        path: targets/artifacts
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag pokemate/pokemate-backend:$(date +%s)
