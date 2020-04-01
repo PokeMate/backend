@@ -31,11 +31,11 @@ jobs:
     - name: Build with Gradle
       env:
         working-directory: ./pokeMate
-      run: ./gradlew build
+      run: ./pokeMate/gradlew build
     - name: Archive backend artifact
       env:
         working-directory: ./pokeMate
       uses: actions/upload-artifact@v1
       with:
         name: pokeMate-backend
-        path: build/libs/
+        path: ./pokeMate/build/libs/
