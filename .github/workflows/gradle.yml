@@ -29,9 +29,11 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x ./pokeMate/gradlew
     - name: Show Gradle Tasks
-      run: ./pokeMate/gradlew tasks
+      run: ./pokeMate/gradlew tasks --all
     - name: Build with Gradle
-      run: ./pokeMate/gradlew build jar
+      run: ./pokeMate/gradlew build
+    - name: Build with Gradle
+      run: ./pokeMate/gradlew assemble
     - name: Archive backend artifact
       uses: actions/upload-artifact@v1
       with:
