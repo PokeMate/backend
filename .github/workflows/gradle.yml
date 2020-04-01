@@ -29,11 +29,7 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x ./pokeMate/gradlew
     - name: Build with Gradle
-      run: ./pokeMate/gradlew build
-    - name: Gradle Command
-      uses: OrangeLabs-moe/gradle-actions@v5.0-openjdk-14
-      with:
-        args: build assemble jar      
+      run: ./pokeMate/gradlew build jar
     - name: Archive backend artifact
       uses: actions/upload-artifact@v1
       with:
