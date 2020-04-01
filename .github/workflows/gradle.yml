@@ -31,17 +31,8 @@ jobs:
     - name: Build with Gradle
       env:
         working-directory: ./pokeMate
-      run: ./pokeMate/gradlew build
-    - name: Archive Test artifact
-      env:
-        working-directory: ./pokeMate
-      uses: actions/upload-artifact@v1
-      with:
-        name: Dockerfile
-        path: .
+      run: ./pokeMate/gradlew build assemble     
     - name: Archive backend artifact
-      env:
-        working-directory: ./pokeMate
       uses: actions/upload-artifact@v1
       with:
         name: pokeMate-backend
