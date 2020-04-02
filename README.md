@@ -1,5 +1,5 @@
-# Pokémon Backend Service
-The backend service facilitates requests from the frontend with the microservice infrastructure of the PokêMate&trade; application.
+# PokéMate Backend Service
+The backend service facilitates requests from the frontend with the micro-service infrastructure of the PokéMate&trade; application.
 The backend service is a Spring Boot REST application.
 
 ## Prerequisites
