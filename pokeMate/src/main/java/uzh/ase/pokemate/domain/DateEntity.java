@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -33,10 +35,15 @@ public class DateEntity implements Serializable {
 	boolean finished;
 
 	@Column
-	private Long pokemonId1;
-
+	@ManyToOne
+	@JoinColumn(name = "pokeDexId")
+	private PokeDexEntity pokeMon1;
+	
 	@Column
-	private Long pokemonId2;
+	@ManyToOne
+	@JoinColumn(name = "pokeDexId")
+	private PokeDexEntity pokeMon2;
+	
 
 	public Long getId() {
 		return id;
@@ -58,20 +65,25 @@ public class DateEntity implements Serializable {
 		this.finished = finished;
 	}
 
-	public Long getPokemonId1() {
-		return pokemonId1;
+	public PokeDexEntity getPokeMon1() {
+		return pokeMon1;
 	}
 
-	public void setPokemonId1(Long pokemonId1) {
-		this.pokemonId1 = pokemonId1;
+	public void setPokeMon1(PokeDexEntity pokeMon1) {
+		this.pokeMon1 = pokeMon1;
 	}
 
-	public Long getPokemonId2() {
-		return pokemonId2;
+	public PokeDexEntity getPokeMon2() {
+		return pokeMon2;
 	}
 
-	public void setPokemonId2(Long pokemonId2) {
-		this.pokemonId2 = pokemonId2;
+	public void setPokeMon2(PokeDexEntity pokeMon2) {
+		this.pokeMon2 = pokeMon2;
 	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 
 }

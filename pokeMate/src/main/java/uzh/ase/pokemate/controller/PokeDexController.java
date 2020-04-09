@@ -44,7 +44,7 @@ public class PokeDexController {
 
 	@GetMapping("/{id}")
 	public ResponseEntity<PokeDexEntity> get(@PathVariable("id") Long id) {
-		PokeDexEntity pokemon = this.pokeDexRepository.findById(id).orElseThrow(() -> new AseException());
+		PokeDexEntity pokemon = this.pokeDexRepository.findByPokeDexId(id);
 		return ok(pokemon);
 	}
 

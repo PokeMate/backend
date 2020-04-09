@@ -52,4 +52,11 @@ public class DateController {
 		// return ok(this.dateRepository.findDateBySuccessAndFinished(successful,
 		// finished).stream().collect(Collectors.toList()));
 	}
+
+	@PostMapping("")
+	public ResponseEntity<PokeMonDto> save(@RequestBody DateEntity dateEntity, HttpServletRequest request) {
+		DateEntity saved = this.dateRepository.save(dateEntity);
+		return created(ServletUriComponentsBuilder.fromContextPath(request).path("/v1/dates/{id}")
+				.buildAndExpand(saved.getId()).toUri()).build();
+	}
 }
