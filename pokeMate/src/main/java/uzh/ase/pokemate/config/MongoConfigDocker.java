@@ -3,6 +3,7 @@ package uzh.ase.pokemate.config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
@@ -11,9 +12,10 @@ import com.mongodb.client.MongoClients;
 
 @Configuration
 @EnableMongoRepositories(basePackages = "uzh.ase.pokemate")
-public class MongoConfig {
+@Profile("docker")
+public class MongoConfigDocker {
 
-	@Value("${spring.data.mongodb.uri}")
+	@Value("${spring.data.mongodb.docker.uri}")
 	private String mongoUri;
 
 	@Bean

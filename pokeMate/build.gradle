@@ -55,6 +55,7 @@ dependencies {
 	testImplementation 'org.springframework.integration:spring-integration-test'
 	//testImplementation 'org.springframework.kafka:spring-kafka-test'
 	testImplementation 'org.springframework.security:spring-security-test'
+	testImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo'
 }
 
 dependencyManagement {
