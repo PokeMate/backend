@@ -39,10 +39,14 @@ dependencies {
 	//implementation 'org.springframework.cloud:spring-cloud-starter-oauth2'
 	//implementation 'org.springframework.kafka:spring-kafka'
 	//implementation 'org.springframework.session:spring-session-core'
-		implementation 'org.mongodb:bson'
+	implementation 'org.mongodb:bson'
 	implementation 'org.mongodb:mongodb-driver'
 	implementation 'org.mongodb:mongo-java-driver'
 	implementation 'com.querydsl:querydsl-mongodb'
+	//implementation 'org.codehaus.jackson:jackson-mapper-asl'
+	implementation 'com.fasterxml.jackson.core:jackson-databind'
+	
+	
 	compileOnly 'org.projectlombok:lombok'
 	
 	//runtimeOnly 'com.h2database:h2'

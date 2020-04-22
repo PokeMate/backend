@@ -25,6 +25,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		// Needed for Cross Origin Requests!!
+		http.csrf().disable();
 		http.authorizeRequests().antMatchers("/homePage").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
 				.antMatchers("/userPage").access("hasRole('ROLE_USER')").antMatchers("/adminPage")
 				.access("hasRole('ROLE_ADMIN')").and().formLogin()// .loginPage("/loginPage")
@@ -32,12 +34,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.passwordParameter("password").and().logout().logoutSuccessUrl("/loginPage?logout");
 
 	}
-	/*
-	 * @Override protected void configure(HttpSecurity http) throws Exception {
-	 * http.authorizeRequests().antMatchers("/",
-	 * "/home").permitAll().anyRequest().authenticated().and().formLogin()
-	 * .permitAll().and().logout().permitAll(); }
-	 */
 
 	@Bean
 	@Override

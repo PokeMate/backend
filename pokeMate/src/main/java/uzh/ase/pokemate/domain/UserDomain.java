@@ -19,4 +19,37 @@ public class UserDomain implements Serializable {
 	private String password;
 	@DBRef
 	private List<PokeDexDomain> pokemonCollection;
+
+	public ObjectId getId() {
+		return id;
+	}
+
+	public void setId(ObjectId id) {
+		this.id = id;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public List<PokeDexDomain> getPokemonCollection() {
+		return pokemonCollection;
+	}
+
+	public void setPokemonCollection(List<PokeDexDomain> pokemonCollection) {
+		this.pokemonCollection = pokemonCollection;
+	}
+
 }
