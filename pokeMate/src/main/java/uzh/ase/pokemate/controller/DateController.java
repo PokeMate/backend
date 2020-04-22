@@ -22,6 +22,7 @@ import uzh.ase.pokemate.repository.PokeDateRepository;
 import uzh.ase.pokemate.repository.PokeDexRepository;
 import uzh.ase.pokemate.service.IMatingService;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/v1/dates")
 public class DateController {

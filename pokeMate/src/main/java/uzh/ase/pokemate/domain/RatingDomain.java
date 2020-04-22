@@ -12,6 +12,7 @@ public class RatingDomain implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	private ObjectId id;
+	private Long ratingId;
 	@DBRef
 	private PokeDexDomain pokemon;
 	private int name;
@@ -53,5 +54,15 @@ public class RatingDomain implements Serializable {
 	public void setRating(int rating) {
 		this.rating = rating;
 	}
+
+	public Long getRatingId() {
+		return ratingId;
+	}
+
+	public void setRatingId(Long ratingId) {
+		this.ratingId = ratingId;
+	}
+	
+	
 
 }

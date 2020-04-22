@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import uzh.ase.pokemate.domain.PokeDexDomain;
 import uzh.ase.pokemate.repository.PokeDexRepository;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/v1/pokedex")
 public class PokeDexController {

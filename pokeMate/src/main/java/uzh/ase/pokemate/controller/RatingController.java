@@ -5,7 +5,6 @@ import static org.springframework.http.ResponseEntity.ok;
 
 import java.util.List;
 
-import org.bson.types.ObjectId;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 import uzh.ase.pokemate.domain.PokeDexDomain;
 import uzh.ase.pokemate.domain.RatingDomain;
 import uzh.ase.pokemate.dto.RatingDto;
-import uzh.ase.pokemate.exceptions.AseException;
 import uzh.ase.pokemate.repository.PokeDexRepository;
 import uzh.ase.pokemate.repository.RatingRepository;
 
@@ -40,11 +38,31 @@ public class RatingController {
 		return ok(ratingRepository.findAll());
 	}
 
-	@GetMapping("/{id}")
-	public ResponseEntity<RatingDomain> get(@PathVariable("id") String id) {
-		RatingDomain pokeRating = this.ratingRepository.findById(new ObjectId(id))
-				.orElseThrow(() -> new AseException());
+	@GetMapping("/ratingId/{id}")
+	public ResponseEntity<RatingDomain> getByRating(@PathVariable("id") Long id) {
+		RatingDomain pokeRating = this.ratingRepository.findByRatingId(id);
 		return ok(pokeRating);
+	}
+
+	@GetMapping("/{id}")
+	public ResponseEntity<RatingDomain> get(@PathVariable("id") Long pokeDexId) {
+		PokeDexDomain pokemon = this.pokeDexRepository.findByPokeDexId(pokeDexId).get(0);
+		List<RatingDomain> pokeRating = this.ratingRepository.findByPokemon(pokemon);
+		RatingDomain avgRating = new RatingDomain();
+		int name = 0;
+		int image = 0;
+		int rating = 0;
+		if (!pokeRating.isEmpty()) {
+			name = pokeRating.stream().map(x -> x.getName()).reduce(0, Integer::sum) / pokeRating.size();
+			image = pokeRating.stream().map(x -> x.getImage()).reduce(0, Integer::sum) / pokeRating.size();
+			rating = pokeRating.stream().map(x -> x.getRating()).reduce(0, Integer::sum) / pokeRating.size();
+		}
+
+		avgRating.setName(name);
+		avgRating.setImage(image);
+		avgRating.setRating(rating);
+		avgRating.setPokemon(pokemon);
+		return ok(avgRating);
 	}
 
 	@PostMapping("/{id}")
