@@ -8,15 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import uzh.ase.pokemate.domain.FetischDomain;
-import uzh.ase.pokemate.repository.FetischRepository;
+import uzh.ase.pokemate.domain.FetishDomain;
+import uzh.ase.pokemate.repository.FetishRepository;
 
 @Service
 @Qualifier("fetischService")
 public class FetischService implements IFetischService {
 
 	@Autowired
-	private FetischRepository fetischRepo;
+	private FetishRepository fetischRepo;
 
 	@Override
 	public int getRandomNumberOfFetisches() {
@@ -24,8 +24,8 @@ public class FetischService implements IFetischService {
 	}
 
 	@Override
-	public List<FetischDomain> getFetisches(int nbrOfFetisches) {
-		List<FetischDomain> fetisches = new ArrayList<FetischDomain>();
+	public List<FetishDomain> getFetisches(int nbrOfFetisches) {
+		List<FetishDomain> fetisches = new ArrayList<FetishDomain>();
 		for (int i = 0; i < nbrOfFetisches; i++) {
 			fetisches.addAll(fetischRepo.findByFetishId(getRandomFetisch()));
 		}
@@ -33,15 +33,18 @@ public class FetischService implements IFetischService {
 	}
 
 	private Long getRandomFetisch() {
-		FetischDomain lastFetisch = fetischRepo.findTopByOrderByFetishIdDesc();
+		FetishDomain lastFetisch = fetischRepo.findTopByOrderByFetishIdDesc();
+		if(lastFetisch == null) {
+			return -1L;
+		}
 		Long max = lastFetisch.getFetishId();
 		return (long) ThreadLocalRandom.current().nextInt(0, (int) (max + 1));
 	}
 
 	@Override
-	public List<FetischDomain> getFetisches() {
+	public List<FetishDomain> getFetisches() {
 		int nbrOfFetisches = getRandomNumberOfFetisches();
-		List<FetischDomain> fetisches = new ArrayList<FetischDomain>();
+		List<FetishDomain> fetisches = new ArrayList<FetishDomain>();
 		for (int i = 0; i < nbrOfFetisches; i++) {
 			fetisches.addAll(fetischRepo.findByFetishId(getRandomFetisch()));
 		}

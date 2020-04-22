@@ -22,6 +22,13 @@ public class RatingDomain implements Serializable {
 	public ObjectId getId() {
 		return id;
 	}
+	
+	
+	public void setId(ObjectId id) {
+		this.id = id;
+	}
+
+
 
 	public PokeDexDomain getPokemon() {
 		return pokemon;

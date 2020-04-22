@@ -3,6 +3,8 @@ HELP.md
 pokeMate/build/classes/
 pokeMate/build/generated/
 pokeMate/build/reports/
+pokeMate/build/jacoco/
+pokeMate/build/jacocoHtml/
 pokeMate/build/resources/
 pokeMate/build/test-results/
 pokeMate/build/tmp/

@@ -34,7 +34,7 @@ public class PokeDexDomain implements Serializable {
 	private List<String> attractedTypes;
 	private List<String> nogos;
 	@DBRef
-	private List<FetischDomain> fetisches;
+	private List<FetishDomain> fetisches;
 
 	public double getAttractivity() {
 		return attractivity;
@@ -204,11 +204,11 @@ public class PokeDexDomain implements Serializable {
 		this.imgurl = imgurl;
 	}
 
-	public List<FetischDomain> getFetisches() {
+	public List<FetishDomain> getFetisches() {
 		return fetisches;
 	}
 
-	public void setFetisches(List<FetischDomain> fetisches) {
+	public void setFetisches(List<FetishDomain> fetisches) {
 		this.fetisches = fetisches;
 	}
 
