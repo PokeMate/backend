@@ -16,7 +16,7 @@ import com.mongodb.client.MongoClients;
 public class MongoConfigDocker {
 
 	@Value("${spring.data.mongodb.docker.uri}")
-	private String mongoUri;
+	private String mongoUri;// = "localhost:5003";
 
 	@Bean
 	public MongoClient mongo() {

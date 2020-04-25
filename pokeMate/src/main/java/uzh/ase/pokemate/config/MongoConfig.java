@@ -12,11 +12,11 @@ import com.mongodb.client.MongoClients;
 
 @Configuration
 @EnableMongoRepositories(basePackages = "uzh.ase.pokemate")
-@Profile({"dev","test"})
+@Profile({ "dev", "test", "default" })
 public class MongoConfig {
 
 	@Value("${spring.data.mongodb.uri}")
-	private String mongoUri;
+	private String mongoUri; // = "localhost:5003"
 
 	@Bean
 	public MongoClient mongo() {

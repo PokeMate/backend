@@ -1,12 +1,12 @@
 package uzh.ase.pokemate.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
-import org.springframework.data.annotation.Id;
-
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.bson.types.ObjectId;
- 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "pokeDex")
 public class PokeDexDomain implements Serializable {
@@ -25,9 +25,65 @@ public class PokeDexDomain implements Serializable {
 	private String spDef;
 	private String speed;
 	private String generation;
+	private String imgurl;
 	private boolean legendary;
-	
-	
+	private double attractivity;
+	private double fertility;
+	private double fitness;
+	private List<String> nogoTypes;
+	private List<String> attractedTypes;
+	private List<String> nogos;
+	@DBRef
+	private List<FetishDomain> fetisches;
+
+	public double getAttractivity() {
+		return attractivity;
+	}
+
+	public void setAttractivity(double attractivity) {
+		this.attractivity = attractivity;
+	}
+
+	public double getFertility() {
+		return fertility;
+	}
+
+	public void setFertility(double fertility) {
+		this.fertility = fertility;
+	}
+
+	public double getFitness() {
+		return fitness;
+	}
+
+	public void setFitness(double fitness) {
+		this.fitness = fitness;
+	}
+
+	public List<String> getNogoTypes() {
+		return nogoTypes;
+	}
+
+	public void setNogoTypes(List<String> nogoTypes) {
+		this.nogoTypes = nogoTypes;
+	}
+
+	public List<String> getAttractedTypes() {
+		return attractedTypes;
+	}
+
+	public void setAttractedTypes(List<String> attractedTypes) {
+		this.attractedTypes = attractedTypes;
+	}
+
+	public List<String> getNogos() {
+		return nogos;
+	}
+
+	public void setNogos(List<String> nogos) {
+		this.nogos = nogos;
+	}
+
 	public ObjectId getId() {
 		return id;
 	}
@@ -138,6 +194,22 @@ public class PokeDexDomain implements Serializable {
 
 	public void setId(ObjectId id) {
 		this.id = id;
+	}
+
+	public String getImgurl() {
+		return imgurl;
+	}
+
+	public void setImgurl(String imgurl) {
+		this.imgurl = imgurl;
+	}
+
+	public List<FetishDomain> getFetisches() {
+		return fetisches;
+	}
+
+	public void setFetisches(List<FetishDomain> fetisches) {
+		this.fetisches = fetisches;
 	}
 
 }
