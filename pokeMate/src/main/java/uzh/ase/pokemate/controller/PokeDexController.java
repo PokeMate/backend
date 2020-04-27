@@ -38,8 +38,10 @@ public class PokeDexController {
 		if (generations != null || types != null) {
 			List<String> genList = generations == null ? new ArrayList<String>() : Arrays.asList(generations);
 			List<String> typeList = types == null ? new ArrayList<String>() : Arrays.asList(types);
-			pokemon = pokemon.stream().filter(pok -> (genList.isEmpty() || genList.contains(pok.getGeneration())
-					&& (typeList.isEmpty() || typeList.contains(pok.getType1())))).collect(Collectors.toList());
+			pokemon = pokemon.stream()//
+					.filter(pok -> (genList.isEmpty() || genList.contains(pok.getGeneration())))//
+					.filter(pok -> (typeList.isEmpty() || containsType(typeList, pok)))//
+					.collect(Collectors.toList());
 		}
 		pokemon.sort((x, y) -> x.getPokeDexId().compareTo(y.getPokeDexId()));
 		return ok(pokemon);
@@ -49,6 +51,18 @@ public class PokeDexController {
 	public ResponseEntity<List<PokeDexDomain>> get(@PathVariable("id") Long id) {
 		List<PokeDexDomain> pokemon = this.pokeDexRepository.findByPokeDexId(id);
 		return ok(pokemon);
+	}
+
+	private boolean containsType(List<String> typeList, PokeDexDomain pok) {
+		return isInType1(typeList, pok) || isInType2(typeList, pok);
+	}
+
+	private boolean isInType2(List<String> typeList, PokeDexDomain pok) {
+		return typeList.contains(pok.getType2());
+	}
+
+	private boolean isInType1(List<String> typeList, PokeDexDomain pok) {
+		return typeList.contains(pok.getType1());
 	}
 
 }
