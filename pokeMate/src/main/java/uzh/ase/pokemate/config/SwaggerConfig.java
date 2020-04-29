@@ -15,10 +15,11 @@ public class SwaggerConfig {
 	public Docket productApi() {
 		return new Docket(DocumentationType.SWAGGER_2)//
 				.select()//
-				.apis(RequestHandlerSelectors.any())//
-				.paths(PathSelectors.any())//
+				//.apis(RequestHandlerSelectors.any())//
+				.apis(RequestHandlerSelectors.basePackage("uzh.ase.pokemate.controller"))//
+				//.paths(PathSelectors.any())//
+        		.paths(PathSelectors.regex("/.*"))//
 				.build();
 
-		// .apis(RequestHandlerSelectors.basePackage("uzh.ase.pokemate.controller")).build();
 	}
 }

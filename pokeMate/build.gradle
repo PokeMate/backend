@@ -3,7 +3,7 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
     id 'jacoco'
-	id 'org.hidetake.swagger.generator' version '2.18.2'
+	//id 'org.hidetake.swagger.generator' version '2.18.2'
     
 }
 
@@ -54,6 +54,17 @@ dependencyManagement {
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
 	}
 }
+/*
+dependencies {
+  swaggerUI 'org.webjars:swagger-ui:3.10.0'
+}
+
+
+swaggerSources {
+  pokemate {
+    inputFile = file('pokemate.yaml')
+  }
+}*/
 
 jacocoTestReport {
     reports {
