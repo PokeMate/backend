@@ -32,7 +32,7 @@ public final class ParentValueMerger {
 	}
 
 	private static double getAvg(double val1, double val2) {
-		return val1 + val2 / 2;
+		return (val1 + val2) / 2;
 	}
 
 	private static boolean calculateLegendary(boolean legendary, boolean legendary2) {
