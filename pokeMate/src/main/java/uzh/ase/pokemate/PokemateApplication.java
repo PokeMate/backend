@@ -11,4 +11,5 @@ public class PokemateApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(PokemateApplication.class, args);
 	}
+
 }
