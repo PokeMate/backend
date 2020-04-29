@@ -12,9 +12,9 @@ public final class NoGoListBuilder {
 
 	public static List<INoGo> build(PokeDexDomain pokemon) {
 		List<INoGo> nogos = new ArrayList<INoGo>();
-		for (String nogo : pokemon.getNogos()) {
-			nogos.add(NoGoFactory.create(NoGoEnum.valueOf(nogo)));
-		}
+//		for (String nogo : pokemon.getNogos()) {
+//			nogos.add(NoGoFactory.create(NoGoEnum.valueOf(nogo)));
+//		}
 		return nogos;
 	}
 

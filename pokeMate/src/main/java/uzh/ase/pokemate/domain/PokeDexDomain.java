@@ -32,7 +32,7 @@ public class PokeDexDomain implements Serializable {
 	private double fitness;
 	private List<String> nogoTypes;
 	private List<String> attractedTypes;
-	private List<String> nogos;
+	private List<NoGoDomain> nogos;
 	@DBRef
 	private List<FetishDomain> fetisches;
 
@@ -76,11 +76,11 @@ public class PokeDexDomain implements Serializable {
 		this.attractedTypes = attractedTypes;
 	}
 
-	public List<String> getNogos() {
+	public List<NoGoDomain> getNogos() {
 		return nogos;
 	}
 
-	public void setNogos(List<String> nogos) {
+	public void setNogos(List<NoGoDomain> nogos) {
 		this.nogos = nogos;
 	}
 
