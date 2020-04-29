@@ -13,6 +13,7 @@ public class FetishDomain implements Serializable {
 	private ObjectId id;
 	private Long fetishId;
 	private String fetish;
+	private String emoji;
 
 	public ObjectId getId() {
 		return id;
@@ -36,6 +37,14 @@ public class FetishDomain implements Serializable {
 
 	public void setFetish(String fetish) {
 		this.fetish = fetish;
+	}
+
+	public String getEmoji() {
+		return emoji;
+	}
+
+	public void setEmoji(String emoji) {
+		this.emoji = emoji;
 	}
 
 }
