@@ -1,9 +1,11 @@
 package uzh.ase.pokemate.controller;
 
-import static org.springframework.http.ResponseEntity.ok;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.CacheControl;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,10 +22,17 @@ public class ImageController {
 	@Autowired
 	@Qualifier("imageService")
 	private IImageService imageService;
-	
+
 	@GetMapping("/{id}")
 	public ResponseEntity<byte[]> get(@PathVariable("id") Long id) {
-		byte[] pokeImage= this.imageService.getImage(id);
-		return ok(pokeImage);
+		byte[] pokeImage = this.imageService.getImage(id);
+		return new ResponseEntity<>(pokeImage, getHeaders(), HttpStatus.OK);
+	}
+
+	private HttpHeaders getHeaders() {
+		HttpHeaders headers = new HttpHeaders();
+		headers.setCacheControl(CacheControl.noCache().getHeaderValue());
+		headers.setContentType(MediaType.IMAGE_PNG);
+		return headers;
 	}
 }
