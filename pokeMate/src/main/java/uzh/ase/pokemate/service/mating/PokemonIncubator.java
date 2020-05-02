@@ -52,7 +52,7 @@ public class PokemonIncubator implements IPokemonIncubator {
 		newPokemon.setNogos(nogoService.getNoGos());
 		newPokemon.setAttractedTypes(typeService.getRandomNumberOfTypes());
 		newPokemon.setNogoTypes(typeService.getRandomNumberOfTypes());
-		imageService.createImage(father.getPokeDexId(), mother.getPokeDexId());
+		imageService.createImage(father.getPokeDexId(), mother.getPokeDexId(), newPokemon.getPokeDexId());
 		newPokemon.setImgurl(String.format(pokeUrl, newPokemon.getPokeDexId()));
 		PokeDexDomain saved = pokeDexRepo.save(newPokemon);
 		return saved;

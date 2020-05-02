@@ -18,9 +18,9 @@ public class ImageService implements IImageService {
 	private static final String GEN_IMAGE_REQUEST = "image-generator";
 
 	@Override
-	public byte[] createImage(Long pokeDexId1, Long pokeDexId2) {
+	public byte[] createImage(Long pokeDexId1, Long pokeDexId2, Long newId) {
 		String url = String.format("%s/%s", baseUrl, GEN_IMAGE_REQUEST);
-		return new RestTemplate().postForEntity(url, new ImageGenerationRequestDto(pokeDexId1, pokeDexId2), byte[].class).getBody();
+		return new RestTemplate().postForEntity(url, new ImageGenerationRequestDto(pokeDexId1, pokeDexId2, newId), byte[].class).getBody();
 	}
 
 	@Override
