@@ -21,6 +21,7 @@ import uzh.ase.pokemate.dto.RatingDto;
 import uzh.ase.pokemate.repository.PokeDexRepository;
 import uzh.ase.pokemate.repository.RatingRepository;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/v1/rating")
 public class RatingController {
