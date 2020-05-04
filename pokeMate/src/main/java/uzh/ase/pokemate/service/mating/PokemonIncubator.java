@@ -1,5 +1,7 @@
 package uzh.ase.pokemate.service.mating;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -51,7 +53,9 @@ public class PokemonIncubator implements IPokemonIncubator {
 		newPokemon.setFetisches(fetischService.getFetisches());
 		newPokemon.setNogos(nogoService.getNoGos());
 		newPokemon.setAttractedTypes(typeService.getRandomNumberOfTypes());
-		newPokemon.setNogoTypes(typeService.getRandomNumberOfTypes());
+		List<String> nogoTypes = typeService.getRandomNumberOfTypes();
+		nogoTypes.removeIf(x-> newPokemon.getAttractedTypes().contains(x));
+		newPokemon.setNogoTypes(nogoTypes);
 		imageService.createImage(father.getPokeDexId(), mother.getPokeDexId(), newPokemon.getPokeDexId());
 		newPokemon.setImgurl(String.format(pokeUrl, newPokemon.getPokeDexId()));
 		PokeDexDomain saved = pokeDexRepo.save(newPokemon);
