@@ -25,7 +25,7 @@ public class FetischService implements IFetischService {
 
 	@Override
 	public List<FetishDomain> getFetisches(int nbrOfFetisches) {
-		List<FetishDomain> fetisches = new ArrayList<FetishDomain>();
+		List<FetishDomain> fetisches = new ArrayList<>();
 		for (int i = 0; i < nbrOfFetisches; i++) {
 			fetisches.addAll(fetischRepo.findByFetishId(getRandomFetisch()));
 		}
@@ -44,7 +44,7 @@ public class FetischService implements IFetischService {
 	@Override
 	public List<FetishDomain> getFetisches() {
 		int nbrOfFetisches = getRandomNumberOfFetisches();
-		List<FetishDomain> fetisches = new ArrayList<FetishDomain>();
+		List<FetishDomain> fetisches = new ArrayList<>();
 		for (int i = 0; i < nbrOfFetisches; i++) {
 			fetisches.addAll(fetischRepo.findByFetishId(getRandomFetisch()));
 		}

@@ -1,6 +1,7 @@
 package uzh.ase.pokemate.service.mating;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -12,13 +13,13 @@ import uzh.ase.pokemate.service.IFetischService;
 import uzh.ase.pokemate.service.INoGoService;
 import uzh.ase.pokemate.service.IPokeTypeService;
 import uzh.ase.pokemate.service.IPokemonIncubator;
-import uzh.ase.pokemate.service.imageGen.IImageService;
+import uzh.ase.pokemate.service.imagegen.IImageService;
 import uzh.ase.pokemate.service.naming.INameGeneratorService;
 
 @Service
 @Qualifier("incubator")
 public class PokemonIncubator implements IPokemonIncubator {
-	private static final String pokeUrl = "pokemate-backend/image/%s";
+	private static final String POKE_URL = "pokemate-backend/image/%s";
 
 	@Autowired
 	private PokeDexRepository pokeDexRepo;
@@ -57,15 +58,18 @@ public class PokemonIncubator implements IPokemonIncubator {
 		nogoTypes.removeIf(x-> newPokemon.getAttractedTypes().contains(x));
 		newPokemon.setNogoTypes(nogoTypes);
 		imageService.createImage(father.getPokeDexId(), mother.getPokeDexId(), newPokemon.getPokeDexId());
-		newPokemon.setImgurl(String.format(pokeUrl, newPokemon.getPokeDexId()));
-		PokeDexDomain saved = pokeDexRepo.save(newPokemon);
-		return saved;
+		newPokemon.setImgurl(String.format(POKE_URL, newPokemon.getPokeDexId()));
+		return pokeDexRepo.save(newPokemon);
 	}
 
 	private Long getNewPokeDexId() {
-		PokeDexDomain lastPokemon = pokeDexRepo.findAll().stream()
-				.max((x, y) -> x.getPokeDexId().compareTo(y.getPokeDexId())).get();
-		return lastPokemon.getPokeDexId() + 1;
+		Optional<PokeDexDomain> lastPokemon = pokeDexRepo.findAll().stream()
+				.max((x, y) -> x.getPokeDexId().compareTo(y.getPokeDexId()));
+		if(lastPokemon.isPresent()) {
+			return lastPokemon.get().getPokeDexId()+1;
+		}else {
+			return 99999L;
+		}
 	}
 
 }

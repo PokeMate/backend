@@ -16,16 +16,15 @@ import com.mongodb.client.MongoClients;
 public class MongoConfigDocker {
 
 	@Value("${spring.data.mongodb.docker.uri}")
-	private String mongoUri;// = "localhost:5003";
+	private String mongoUri;
 
 	@Bean
 	public MongoClient mongo() {
-		MongoClient mongoClient = MongoClients.create("mongodb://" + mongoUri);
-		return mongoClient;
+		return MongoClients.create("mongodb://" + mongoUri);
 	}
 
 	@Bean
-	public MongoTemplate mongoTemplate() throws Exception {
+	public MongoTemplate mongoTemplate() {
 		return new MongoTemplate(mongo(), "pokemate");
 	}
 }

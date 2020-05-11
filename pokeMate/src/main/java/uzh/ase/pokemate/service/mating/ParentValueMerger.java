@@ -1,11 +1,13 @@
 package uzh.ase.pokemate.service.mating;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 import uzh.ase.pokemate.domain.PokeDexDomain;
 
 public final class ParentValueMerger {
 
+	private static Random rnd = new SecureRandom();
 	private ParentValueMerger() {
 	}
 
@@ -36,7 +38,6 @@ public final class ParentValueMerger {
 	}
 
 	private static boolean calculateLegendary(boolean legendary, boolean legendary2) {
-		Random rnd = new Random();
 		double nextGaussian = rnd.nextGaussian();
 		double bonus = 0;
 		bonus += legendary ? 0.1 : 0.0;
@@ -45,7 +46,6 @@ public final class ParentValueMerger {
 	}
 
 	private static String getRandomValue(String val1, String val2) {
-		Random rnd = new Random();
 		if (rnd.nextBoolean()) {
 			return val1;
 		} else {
