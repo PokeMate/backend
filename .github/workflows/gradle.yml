@@ -30,7 +30,7 @@ jobs:
     - name: Build with Gradle
       run: ./pokeMate/gradlew build
     - name: Run SonarCloud
-      run: cd pokeMate && ./gradlew sonarqube -x && cd ..
+      run: cd pokeMate && ./gradlew sonarqube -x test && cd ..
     - name: Build with Gradle
       run: ls ./pokeMate/build/libs
     - name: Archive backend artifact
