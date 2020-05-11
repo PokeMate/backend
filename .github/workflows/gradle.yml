@@ -42,3 +42,9 @@ jobs:
         path: targets/artifacts
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag pokemate/pokemate-backend:$(date +%s)
+    # Sonar Qube
+    - name: SonarCloud Scan
+      uses: sonarsource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
