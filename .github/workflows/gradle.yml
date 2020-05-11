@@ -29,8 +29,6 @@ jobs:
       run: chmod +x ./pokeMate/gradlew
     - name: Build with Gradle
       run: ./pokeMate/gradlew build
-    - name: SonarQube with Gradle
-      run: cd pokeMate && ./gradlew sonarqube && cd ..
     - name: Build with Gradle
       run: ls ./pokeMate/build/libs
     - name: Archive backend artifact
