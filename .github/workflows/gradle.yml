@@ -29,6 +29,8 @@ jobs:
       run: chmod +x ./pokeMate/gradlew
     - name: Build with Gradle
       run: ./pokeMate/gradlew build
+    - name: SonarQube with Gradle
+      run: ./pokeMate/gradlew sonarqube
     - name: Build with Gradle
       run: ls ./pokeMate/build/libs
     - name: Archive backend artifact
@@ -41,11 +43,4 @@ jobs:
         name: pokemate-backend
         path: targets/artifacts
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag pokemate/pokemate-backend:$(date +%s)
-    # Sonar Qube
-    - name: SonarCloud Scan
-      uses: sonarsource/sonarcloud-github-action@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        JAVA_HOME: ''
+      run: docker build . --file Dockerfile --tag pokemate/pokemate-backend:$(date +%s)  
