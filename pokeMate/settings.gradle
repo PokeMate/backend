@@ -1,1 +1,3 @@
 rootProject.name = 'pokemate'
+sonar.projectName='pokemate'
+sonar.projectKey = 'PokeMate_backend'

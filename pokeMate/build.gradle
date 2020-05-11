@@ -4,6 +4,7 @@ plugins {
 	id 'java'
     id 'jacoco'
 	//id 'org.hidetake.swagger.generator' version '2.18.2'
+	id "org.sonarqube" version "2.7"
     
 }
 
@@ -78,4 +79,11 @@ jacocoTestReport {
 test {
 	useJUnitPlatform()
 	useJUnit()
+}
+
+sonarqube {
+    properties {
+        properties["sonar.projectName"] = 'pokemate'
+        properties["sonar.projectKey"] = 'PokeMate_backend' 
+    }
 }
