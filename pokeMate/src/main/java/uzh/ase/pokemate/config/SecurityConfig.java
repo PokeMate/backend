@@ -3,6 +3,7 @@ package uzh.ase.pokemate.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -14,7 +15,11 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @Configuration
 @EnableWebSecurity
+//@Profile({ "dev", "test", "default" })
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+	private static final String[] AUTH_WHITELIST = { "/swagger-resources/**", "/swagger-ui.html", "/v2/api-docs",
+			"/webjars/**" };
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder authenticationMgr) throws Exception {
@@ -25,19 +30,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/homePage").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+		// Needed for Cross Origin Requests!!
+		http.csrf().disable();
+		http.authorizeRequests()//
+				.antMatchers(AUTH_WHITELIST).permitAll()//
+				.antMatchers("/homePage").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
 				.antMatchers("/userPage").access("hasRole('ROLE_USER')").antMatchers("/adminPage")
 				.access("hasRole('ROLE_ADMIN')").and().formLogin()// .loginPage("/loginPage")
 				.defaultSuccessUrl("/homePage").failureUrl("/loginPage?error").usernameParameter("username")
 				.passwordParameter("password").and().logout().logoutSuccessUrl("/loginPage?logout");
 
 	}
-	/*
-	 * @Override protected void configure(HttpSecurity http) throws Exception {
-	 * http.authorizeRequests().antMatchers("/",
-	 * "/home").permitAll().anyRequest().authenticated().and().formLogin()
-	 * .permitAll().and().logout().permitAll(); }
-	 */
 
 	@Bean
 	@Override

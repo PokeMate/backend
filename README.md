@@ -23,6 +23,9 @@ Create an execution environment to host the spring boot application.
 Start the application:
 ```bash
 java -jar pokemate-0.0.1-SNAPSHOT.jar
+
+java -jar -Dspring.profiles.active=docker build/libs/pokemate-0.0.1-SNAPSHOT.jar --debug
+
 ```
 ### With Docker
 
