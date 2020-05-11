@@ -85,5 +85,8 @@ sonarqube {
     properties {
         properties["sonar.projectName"] = 'pokemate'
         properties["sonar.projectKey"] = 'PokeMate_backend' 
+		properties["sonar.organization"] = 'pokemate'
+		properties["sonar.host.url"] = 'https://sonarcloud.io'
+        properties["sonar.login"] = '929a4e8a8c7e69c0427f06b4a8dd56716a4bef36'
     }
 }
