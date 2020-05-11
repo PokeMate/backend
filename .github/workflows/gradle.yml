@@ -31,6 +31,9 @@ jobs:
       run: ./pokeMate/gradlew build
     - name: Run SonarCloud
       run: cd pokeMate && ./gradlew sonarqube -x test && cd ..
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     - name: Build with Gradle
       run: ls ./pokeMate/build/libs
     - name: Archive backend artifact
