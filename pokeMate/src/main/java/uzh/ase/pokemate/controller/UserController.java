@@ -34,7 +34,7 @@ public class UserController {
 	@GetMapping("/{id}")
 	public ResponseEntity<UserDomain> get(@PathVariable("id") String id) {
 		UserDomain pokeRating = this.userRepository.findById(new ObjectId(id))
-				.orElseThrow(() -> new AseException());
+				.orElseThrow(AseException::new);
 		return ok(pokeRating);
 	}
 }

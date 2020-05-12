@@ -21,9 +21,7 @@ public class MatingService implements IMatingService {
 		double sumPok1 = pokemon1.getAttractivity() + pokemon1.getFertility() + pokemon1.getFitness();
 		double sumPok2 = pokemon2.getAttractivity() + pokemon2.getFertility() + pokemon2.getFitness();
 
-		double initialProb = (sumPok1 + sumPok2) / 2;
-		double probability = initialProb;
-		return probability;
+		return (sumPok1 + sumPok2) / 2;
 	}
 
 	@Override

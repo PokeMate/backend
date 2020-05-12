@@ -25,7 +25,7 @@ public class NoGoService implements INoGoService {
 	@Override
 	public List<NoGoDomain> getNoGos() {
 		int nbrOfFetisches = getRandomNumberOfNoGos();
-		List<NoGoDomain> fetisches = new ArrayList<NoGoDomain>();
+		List<NoGoDomain> fetisches = new ArrayList<>();
 		for (int i = 0; i < nbrOfFetisches; i++) {
 			fetisches.addAll(nogoRepo.findByNogoId(getRandomNoGo()));
 		}

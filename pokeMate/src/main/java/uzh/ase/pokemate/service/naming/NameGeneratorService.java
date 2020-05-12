@@ -18,19 +18,18 @@ public class NameGeneratorService implements INameGeneratorService {
 
 	@Value("${pokemate.namegen.basseuri}")
 	private String baseUrl;
-	private static final String nameRequest = "names?amount=1";
+	private static final String NAME_REQUEST = "names?amount=1";
 
 	@Override
 	public String generateName() {
 		RestTemplate restTemplate = new RestTemplate();
-		String url = String.format("%s/%s", baseUrl, nameRequest);
+		String url = String.format("%s/%s", baseUrl, NAME_REQUEST);
 		String response = restTemplate.getForObject(url, String.class);
-		List<String> readValue = new ArrayList<String>();
+		List<String> readValue = new ArrayList<>();
 		try {
 			readValue = Arrays.asList(new ObjectMapper().readValue(response, String[].class));
 		} catch (JsonProcessingException e) {
 			// ignore exception => use dummy name
-			e.printStackTrace();
 		}
 		String name = "NoName";
 		if (!readValue.isEmpty()) {

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import uzh.ase.pokemate.service.imageGen.IImageService;
+import uzh.ase.pokemate.service.imagegen.IImageService;
 
 @CrossOrigin(origins = "*")
 @RestController

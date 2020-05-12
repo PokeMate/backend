@@ -1,6 +1,6 @@
 HELP.md
 .gradle
-pokeMate/build/classes/
+pokeMate/build/sonar/
 pokeMate/build/generated/
 pokeMate/build/reports/
 pokeMate/build/jacoco/

@@ -54,9 +54,9 @@ public class RatingController {
 		int image = 0;
 		int rating = 0;
 		if (!pokeRating.isEmpty()) {
-			name = pokeRating.stream().map(x -> x.getName()).reduce(0, Integer::sum) / pokeRating.size();
-			image = pokeRating.stream().map(x -> x.getImage()).reduce(0, Integer::sum) / pokeRating.size();
-			rating = pokeRating.stream().map(x -> x.getRating()).reduce(0, Integer::sum) / pokeRating.size();
+			name = pokeRating.stream().map(RatingDomain::getName).reduce(0, Integer::sum) / pokeRating.size();
+			image = pokeRating.stream().map(RatingDomain::getImage).reduce(0, Integer::sum) / pokeRating.size();
+			rating = pokeRating.stream().map(RatingDomain::getRating).reduce(0, Integer::sum) / pokeRating.size();
 		}
 
 		avgRating.setName(name);

@@ -19,13 +19,13 @@ public class PokeTypeService implements IPokeTypeService {
 
 	@Override
 	public List<String> getRandomNumberOfTypes() {
-		Set<String> types = new HashSet<String>();
+		Set<String> types = new HashSet<>();
 
 		int nbrOfTypes = ThreadLocalRandom.current().nextInt(0, (ALL_TYPES.size() - 1)/2);
 		for (int i = 0; i < nbrOfTypes; i++) {
 			types.add(ALL_TYPES.get(ThreadLocalRandom.current().nextInt(0, ALL_TYPES.size() - 1)));
 		}
-		return new ArrayList<String>(types);
+		return new ArrayList<>(types);
 	}
 
 }

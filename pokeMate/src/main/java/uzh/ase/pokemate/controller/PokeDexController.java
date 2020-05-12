@@ -36,8 +36,8 @@ public class PokeDexController {
 		List<PokeDexDomain> pokemon;
 		pokemon = this.pokeDexRepository.findAll();
 		if (generations != null || types != null) {
-			List<String> genList = generations == null ? new ArrayList<String>() : Arrays.asList(generations);
-			List<String> typeList = types == null ? new ArrayList<String>() : Arrays.asList(types);
+			List<String> genList = generations == null ? new ArrayList<>() : Arrays.asList(generations);
+			List<String> typeList = types == null ? new ArrayList<>() : Arrays.asList(types);
 			pokemon = pokemon.stream()//
 					.filter(pok -> (genList.isEmpty() || genList.contains(pok.getGeneration())))//
 					.filter(pok -> (typeList.isEmpty() || containsType(typeList, pok)))//
